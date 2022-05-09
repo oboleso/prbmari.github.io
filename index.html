@@ -6,120 +6,155 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://threejs.org/build/three.min.js"></script>
     <!-- <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script> -->
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <!-- <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script> -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <!-- <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v2.6.1/dist/aframe-extras.min.js"></script> -->
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v6.0.0/dist/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/aframe-simple-sun-sky@^1.2.2/simple-sun-sky.js"></script>
   </head>
   <body>
-    <a-scene>    
-        <a-assets>
-          <img src="assets/suelo.jpg" id="suelo" />
-          <img src="assets/pared9.jpg" id="pared" />
-          <a-asset-item src="cuadro/model.dae" id="marco"></a-asset-item>
-          <a-asset-item src="almohada/model.glb" id="almo"></a-asset-item>
-          <a-asset-item src="Lobo_completo/scene.gltf" id="lobito"></a-asset-item>
-          <!-- <a-asset-item src="Drone/scene.gltf" id="drone"></a-asset-item> -->
-        </a-assets>
-        <a-assets>
-          <a-mixin id="checkpoint"></a-mixin>
-          <a-mixin id="checkpoint-hovered" color="#6CEEB5"></a-mixin>
-        </a-assets>
-        <!-- <a-assets>
-          <a-asset-item id="lobo-obj" src="LESO/LESO.obj"></a-asset-item>
-          <a-asset-item id="lobo-mtl" src="LESO/LESO.mtl"></a-asset-item>          
-        </a-assets> -->
-        <a-assets>
-          <a-asset-item id="edificio-obj" src="C:\inetpub\wwwroot\Mari\EdificioMari\Edificio\EdifMari.obj"></a-asset-item>
-          <a-asset-item id="edificio-mtl" src="C:\inetpub\wwwroot\Mari\EdificioMari\Edificio\EdifMari.mtl"></a-asset-item>          
-        </a-assets>
-        <a-assets>
-          <a-asset-item id="cupula-obj" src="EdificioMari/Edificio/EdifMariCupula.obj"></a-asset-item>
-          <a-asset-item id="cupula-mtl" src="EdificioMari/Edificio/EdifMariCupula.mtl"></a-asset-item>          
-        </a-assets>
+    <a-scene>
+      <a-assets>
+        <img id="pasto" src="pano_pasto.jpg">
+        <img id="apto" src="pano_casa_papas.jpg">
+      </a-assets>
+      <a-sky id='cielo' src="#pasto" 
+        animation__fadein="startEvents: fadein; property: material.opacity; from: 0; to: 1; dur: 1000;"
+        animation__fadeout="startEvents: fadeout; property: material.opacity; from: 1; to: 0; dur: 1000;"
+      ></a-sky>
 
-        <!-- <a-simple-sun-sky sun-position="1 1 0"></a-simple-sun-sky> -->
-        <!-- <a-simple-sun-sky sun-position="-1 1 -1" light-color="#87cefa" dark-color="#00bfff" fog-color="#74d2fa"></a-simple-sun-sky> -->
-        <a-simple-sun-sky sun-position="0.7 0.4 -1"></a-simple-sun-sky>
-        <a-entity light="type: ambient; color: #fff" position="0 0 4"></a-entity>
-        <!-- <a-entity light="type: directional; color: #FFF; intensity: 0.5" position="0.7 0.4 -1"></a-entity> -->
-
-        <!-- <a-entity>
-            <a-camera kinematic-body position="0 1.6 0" universal-controls="movementControls: checkpoint" checkpoint-controls="mode: animate">
-                <a-entity cursor="fuse: true; fuseTimeout: 1000" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;" material="color: #CCC; shader: flat;">
-                </a-entity>
-            </a-camera>
-        </a-entity> -->
-        <!--V5 <a-entity id="visitante"
-            camera
-            kinematic-body
-            universal-controls="movementControls: checkpoint"
-            checkpoint-controls="mode: animate"
-            rotation="0 270 0"
-            position="-8 1.6 0">
-
-            <a-cursor fuse="true" fuse-timeout="1000" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02;" material="color: #444; shader: flat;"></a-cursor>
-        </a-entity>         -->
-
-        <a-entity id="rig"
-          movement-controls="controls: checkpoint"
-          checkpoint-controls="mode: animate">
-          <a-entity camera
-                    position="0 1.6 0"
-                    look-controls="pointerLockEnabled: true">
-                    <a-cursor fuse="true" fuse-timeout="1000" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02;" material="color: #444; shader: flat;"></a-cursor>
-          </a-entity>      
+      <!-- <a-entity camera look-controls>
+        <a-entity cursor="fuse: true; fuseTimeout: 500"
+                  position="0 0 -1"
+                  geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
+                  material="color: black; shader: flat">
         </a-entity>
-        
-
-        <a-cylinder checkpoint radius="0.3" height="0.01" position="0 0 0" color="#39BB82"></a-cylinder>
-        <a-cylinder checkpoint radius="0.3" height="0.01" position="0 0 2" color="#39BB82"></a-cylinder>
-        <a-cylinder checkpoint radius="0.3" height="0.01" position="0 0 4" color="#39BB82"></a-cylinder>
-        <a-cylinder checkpoint radius="0.3" height="0.01" position="0 0 6" color="#39BB82"></a-cylinder>
-        <a-cylinder checkpoint radius="0.3" height="0.01" position="0 0 8" color="#39BB82"></a-cylinder>
-        <a-cylinder checkpoint radius="0.3" height="0.01" position="0 0 10" color="#39BB82"></a-cylinder>
-        <a-cylinder checkpoint radius="0.3" height="0.01" position="0 0 12" color="#39BB82"></a-cylinder>
-        <a-cylinder checkpoint radius="0.3" height="0.01" position="0 0 14" color="#39BB82"></a-cylinder>
-        <a-cylinder checkpoint radius="0.3" height="0.01" position="0 0 16" color="#39BB82"></a-cylinder>
-        <a-cylinder checkpoint radius="0.3" height="0.01" position="0 0 18" color="#39BB82"></a-cylinder>
-        <a-cylinder checkpoint radius="0.3" height="0.01" position="0 0 20" color="#39BB82"></a-cylinder>
-                
-        <!-- <a-box static-body position="0 0 -2" width="20" height="7" depth="0.2" src="#pared"></a-box>
-        <a-collada-model src="#marco" position="-9 1 -1.9" rotation="90 0 0" scale="6 5 5"></a-collada-model>        
-        <a-collada-model src="#marco" position="-6.8 1 1.8" rotation="90 180 0" scale="6 5 5"></a-collada-model>
-        <a-box static-body position="0 0 2" width="20" height="7" depth="0.2" src="#pared"></a-box> -->
-
-        <!-- <a-entity gltf-model="#almo" position="0 1 -1.9" rotation="0 0 0" scale="3 2 2"></a-entity> -->  
-        <!-- <a-entity obj-model="obj: #lobo-obj; mtl: #lobo-mtl" position="-4 1 1.9" scale="0.01 0.01 0.01"></a-entity> -->
-        <a-entity obj-model="obj: #edificio-obj; mtl: #edificio-mtl" position="-20 0.01 1.9"></a-entity>
-        <a-entity obj-model="obj: #cupula-obj; mtl: #cupula-mtl" position="-20 0.01 1.9"></a-entity>
-
-        <a-entity gltf-model="#lobito" position="0 0.35 -1.9" animation-mixer="clip: 04_Idle;">
-          <a-entity light="type: spot; angle: 50; intensity: 15; distance: 1.55; decay: 0.1" position="-0.811 -0.283 0.144" rotation="52.017 -67.042 33.308"></a-entity>
+      </a-entity> -->
+      <a-entity id="cam" camera look-controls position="0 0 0" 
+        animation__fadein="startEvents: fadein; property: position; from: 0 0 0; to: 0 0 -450; dur: 500;"
+        animation__fadeout="startEvents: fadeout; property: position; from: 0 0 -450; to: 0 0 0; dur: 0;">
+        <a-entity
+          animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.01 0.01 0.01; to: 0.03 0.03 0.03"
+          animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1300; from: 0.03 0.03 0.03; to: 0.01 0.01 0.01"
+          animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 300; to: 0.03 0.03 0.03"
+          cursor="fuse: true;"
+          material="color: #0f0; shader: flat"
+          position="0 0 -3"
+          geometry="primitive: ring">
         </a-entity>
-        <a-entity gltf-model="#lobito" position="0 0.35 1.9" animation-mixer="clip: 04_Idle;">
-          <a-entity light="type: spot; angle: 50; intensity: 15; distance: 1.55; decay: 0.1" position="-0.811 -0.283 -0.498" rotation="47.991 -122.14 -35.163"></a-entity>
-        </a-entity>
-
-        <!-- <a-entity gltf-model="#drone" position="-4 1 1.9" scale="0.01 0.01 0.01" animation-mixer></a-entity> -->
-        
-        <!-- <a-grid static-body src="#suelo"></a-grid>         -->
-        <a-grid static-body></a-grid>
+      </a-entity> 
+      
+      <!-- <a-entity id="box" cursor-listener geometry="primitive: box" material="color: blue" position="-1 0.5 -3" rotation="0 45 0"></a-entity> -->
+      <a-image src="#apto" position="-1 0 -4" cursor-listener data-imagen="#apto"></a-image>
+    
+      <!-- Basic triangle. -->
+      <!-- <a-triangle color="#CCC" vertex-c="1 -1 0" position="-3 0 -3" ></a-triangle> -->
+      
     </a-scene>
 
     <script>
-            // Component to change to a sequential color on click.
-            // AFRAME.registerComponent('cursor-listener', {
-            //   init: function () {
-            //     var lastIndex = -1;
-            //     var COLORS = ['red', 'green', 'blue'];
-            //     this.el.addEventListener('click', function (evt) {
-            //       lastIndex = (lastIndex + 1) % COLORS.length;
-            //       this.setAttribute('material', 'color', COLORS[lastIndex]);
-            //       console.log('I was clicked at: ', evt.detail.intersection.point);
-            //     });
-            //   }
-            // });
-        </script>
+      AFRAME.registerComponent('cursor-listener', {
+        init: function () {
+          //Para cambiar color cubo
+          // var lastIndex = -1;
+          // var COLORS = ['red', 'green', 'blue'];
+          // this.el.addEventListener('click', function (evt) {
+          //   lastIndex = (lastIndex + 1) % COLORS.length;
+          //   this.setAttribute('material', 'color', COLORS[lastIndex]);
+          //   console.log('I was clicked at: ', evt.detail.intersection.point);
+          // });
+
+          //Cambiar fotos --Animacion desvanecer cielo
+        //   this.el.addEventListener('click', function (evt) {
+        //     console.log(this.dataset.imagen);
+        //     var imagen = this;
+        //     var cielo = document.getElementById('cielo');
+        //     cielo.emit('fadeout');
+
+        //     if(this.dataset.imagen == "#apto")
+        //     {              
+        //       setTimeout(function () {
+        //         cielo.setAttribute('src', '#apto');
+        //         imagen.setAttribute('src', '#pasto');
+        //         imagen.setAttribute('data-imagen', '#pasto');
+        //       }, 1000);              
+        //       setTimeout(function () {
+        //         cielo.emit('fadein');                
+        //       }, 1000);
+              
+        //     }
+        //     else
+        //     {              
+        //       setTimeout(function () {
+        //         cielo.setAttribute('src', '#pasto');
+        //         imagen.setAttribute('src', '#apto');
+        //         imagen.setAttribute('data-imagen', '#apto');
+        //       }, 1000);              
+        //       setTimeout(function () {
+        //         cielo.emit('fadein');                
+        //       }, 1000);
+        //     }
+        //     console.log('I was clicked at: ', evt.detail.intersection.point);
+        //   });
+
+        //Cambiar fotos -- Animación correr camara como google maps
+        this.el.addEventListener('click', function (evt) {
+            console.log(this.dataset.imagen);
+            var imagen = this;
+            var cielo = document.getElementById('cielo');
+            var mycam = document.getElementById('cam');
+            console.log("Rotación: ", mycam.getAttribute("rotation"));
+            mycam.emit('fadein');
+
+            if(this.dataset.imagen == "#apto")
+            {              
+              setTimeout(function () {
+                cielo.setAttribute('src', '#apto');
+                imagen.setAttribute('src', '#pasto');
+                imagen.setAttribute('data-imagen', '#pasto');
+                imagen.setAttribute('position', '-2.5 0 -4');
+                mycam.emit('fadeout'); 
+              }, 500);              
+              // setTimeout(function () {
+              //   mycam.emit('fadeout');                
+              // }, 500);
+              
+            }
+            else
+            {              
+              setTimeout(function () {
+                cielo.setAttribute('src', '#pasto');
+                imagen.setAttribute('src', '#apto');
+                imagen.setAttribute('data-imagen', '#apto');
+                imagen.setAttribute('position', '-1 0 -4');
+                mycam.emit('fadeout'); 
+              }, 500);              
+              // setTimeout(function () {
+              //   cielo.emit('fadeout');                
+              // }, 500);
+            }
+            console.log('I was clicked at: ', evt.detail.intersection.point);
+          });
+
+
+         }
+      });
+
+      window.addEventListener("wheel", event => {
+        const delta = Math.sign(event.wheelDelta);
+        //getting the mouse wheel change (120 or -120 and normalizing it to 1 or -1)
+        var mycam = document.getElementById('cam').getAttribute('camera');
+        var finalZoom = document.getElementById('cam').getAttribute('camera').zoom + delta;
+        //limiting the zoom so it doesnt zoom too much in or out
+        if(finalZoom < 1)
+          finalZoom = 1;
+        if(finalZoom > 8)
+          finalZoom = 8;  
+
+        mycam.zoom = finalZoom;
+        //setting the camera element
+        document.getElementById('cam').setAttribute('camera', mycam);
+      });
+    </script>
   </body>
 </html>

@@ -4,9 +4,13 @@
     <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <!-- <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>    
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v2.6.1/dist/aframe-extras.min.js"></script>
-    <script src="https://cdn.rawgit.com/ngokevin/kframe/d7bd9968/components/sun-sky/dist/aframe-sun-sky.min.js"></script>
+    <script src="https://cdn.rawgit.com/ngokevin/kframe/d7bd9968/components/sun-sky/dist/aframe-sun-sky.min.js"></script> -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-simple-sun-sky@^1.2.2/simple-sun-sky.js"></script>
+    
 
   </head>
   <body>
@@ -18,11 +22,16 @@
           id="pared" />
       </a-assets>
 
-      <a-entity id="jugador"
+      <!-- <a-entity id="jugador"
         camera
         kinematic-body
         universal-controls
-        position="0 1.6 0">
+        position="0 1.6 0"> -->
+        <a-entity id="jugador" movement-controls kinematic-body>
+          <a-entity camera
+                    position="0 0.5 0"
+                    look-controls="pointerLockEnabled: true"></a-entity>
+        </a-entity>
 
         <a-cursor fuse="true" fuse-timeout="800"></a-cursor>
 

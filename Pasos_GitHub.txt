@@ -1,0 +1,11 @@
+Una vez dentro del directorio realizaremos los siguientes pasos:
+Crear un nuevo repositorio de git dentro del directorio
+Añadir archivos para subir
+Realizar el primer commit
+Agregar un repositorio remoto (se usará la url que GitHub proporcionó al crear el repositorio en la plataforma)
+Subir los archivos al repositorio en GitHub
+$ git init
+$ git add .
+$ git commit -m “first commit”
+$ git remote add origin https://github.com/demoTaller/demoTaller.git
+$ git push -u origin master
