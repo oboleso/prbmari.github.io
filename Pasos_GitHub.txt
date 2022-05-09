@@ -7,5 +7,6 @@ Subir los archivos al repositorio en GitHub
 $ git init
 $ git add .
 $ git commit -m “first commit”
-$ git remote add origin https://github.com/demoTaller/demoTaller.git
+$ git remote add origin https://github.com/oboleso/prbmari.github.io.git  //++Nuevo proyecto
+$ git remote add upstream https://github.com/oboleso/prbmari.github.io.git  //++Ya existe
 $ git push -u origin master
